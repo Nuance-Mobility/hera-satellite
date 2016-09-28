@@ -6,6 +6,7 @@ MAINTAINER 	sspcm <mobility-sspcm@nuance.com>
 #			gem install net-ping sensu-plugin snmp nokogiri nori rest-client colorize --no-ri --no-rdoc && i
 RUN         gem install sensu-plugin vmstat sys sys-filesystem
 
+COPY docker-entrypoint.sh /
 
 ENTRYPOINT  ["/docker-entrypoint.sh"]
 
