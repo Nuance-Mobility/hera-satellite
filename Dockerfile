@@ -1,6 +1,10 @@
 FROM 		nuancemobility/sensu-client
 MAINTAINER 	sspcm <mobility-sspcm@nuance.com>
 
+
+COPY docker-entrypoint.sh /
+
+
 # Configure Sensu with whatever your checks require
 #RUN 		apt-get install -y ruby zlib1g-dev ruby-dev build-essential git libsmi2ldbl && \
 #			gem install net-ping sensu-plugin snmp nokogiri nori rest-client colorize --no-ri --no-rdoc && i
@@ -32,8 +36,6 @@ RUN        apt-get install -y chrpath libssl-dev libxft-dev libfreetype6 libfree
 # Install diagnostic tools
 RUN         gem install sensu-plugin vmstat sys sys-filesystem
 
-
-COPY docker-entrypoint.sh /
 
 ENTRYPOINT  ["/docker-entrypoint.sh"]
 
