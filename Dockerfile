@@ -7,7 +7,7 @@ MAINTAINER 	sspcm <mobility-sspcm@nuance.com>
 
 
 # Update apt
-RUN         apt-get upgrade
+RUN         apt-get update -y
 
 # Configure Sensu for plugin dependencies 
 RUN         apt-get install -y ruby build-essential
@@ -19,18 +19,8 @@ RUN        apt-get install -y python3-pip && pip3 install -U selenium && pip3 in
 # Install Nagios plugins
 RUN        apt-get -y install nagios-plugins
 
-# Install SNMP libraries
-RUN        apt-get -y install snmp snmp-mibs-downloader
-            
-# Install PhantomJS
-RUN        apt-get install -y chrpath libssl-dev libxft-dev libfreetype6 libfreetype6-dev libfontconfig1 && \
-            libfontconfig1-dev nodejs-legacy nodejs npm && npm install phantomjs && \
-            mv /node_modules/phantomjs /usr/local/share && ln -sf /usr/local/share/phantomjs/bin/phantomjs /usr/local/bin/
-
-
+# Install diagnostic tools
 RUN         gem install sensu-plugin vmstat sys sys-filesystem
-
-
 
 
 COPY docker-entrypoint.sh /
